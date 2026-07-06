@@ -1,5 +1,6 @@
 import DashboardHeader from "../components/dashboard/DashboardHeader";
 import StatsCards from "../components/dashboard/StatsCards";
+import QuickActions from "../components/dashboard/QuickActions";
 
 export default function Dashboard() {
   return (
@@ -8,6 +9,8 @@ export default function Dashboard() {
         <DashboardHeader />
 
         <StatsCards />
+
+        <QuickActions />
       </div>
     </div>
   );
