@@ -28,8 +28,8 @@ export default function LoginForm() {
 
       login(
         response.user,
-        response.access_token,
-        response.refresh_token
+        response.access,
+        response.refresh
       );
 
       toast.success("Welcome back!");

@@ -7,15 +7,27 @@ const api = axios.create({
   },
 });
 
-// Automatically attach the access token to every request
-api.interceptors.request.use((config) => {
-  const token = localStorage.getItem("accessToken");
+// Attach JWT to protected requests only
+api.interceptors.request.use(
+  (config) => {
+    const token = localStorage.getItem("accessToken");
 
-  if (token) {
-    config.headers.Authorization = `Bearer ${token}`;
-  }
+    const publicRoutes = [
+      "/auth/login/",
+      "/auth/register/",
+    ];
 
-  return config;
-});
+    const isPublic = publicRoutes.some((route) =>
+      config.url?.includes(route)
+    );
+
+    if (token && !isPublic) {
+      config.headers.Authorization = `Bearer ${token}`;
+    }
+
+    return config;
+  },
+  (error) => Promise.reject(error)
+);
 
 export default api;
