@@ -21,14 +21,23 @@ export default function PhoneNumberModal({
   function handleSubmit(e) {
     e.preventDefault();
 
-    const formatted = phoneNumber.replace(/\s+/g, "");
+    let formatted = phoneNumber.replace(/\s+/g, "");
 
-    if (!/^2547\d{8}$/.test(formatted)) {
-      toast.error(
-        "Enter a valid phone number (2547XXXXXXXX)."
-      );
-      return;
+    if (formatted.startsWith("+254")) {
+        formatted = formatted.substring(1);
     }
+
+    if (formatted.startsWith("07")) {
+        formatted = "254" + formatted.substring(1);
+    }
+
+    if (!/^254[71]\d{8}$/.test(formatted)) {
+        toast.error(
+            "Enter a valid phone number."
+        );
+        return;
+    }
+
 
     onConfirm(formatted);
   }
