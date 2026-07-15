@@ -97,7 +97,7 @@ export default function RegisterForm() {
             });
 
             setTimeout(() => {
-                navigate("/");
+                navigate("/login");
             }, 1500);
 
         } catch (err) {
@@ -236,7 +236,7 @@ export default function RegisterForm() {
                 Already have an account?
 
                 <Link
-                    to="/"
+                    to="/login"
                     className="ml-2 font-semibold text-[#22A39F]"
                 >
                     Sign In

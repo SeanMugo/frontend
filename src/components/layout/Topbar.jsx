@@ -1,4 +1,4 @@
-import { Bell } from "lucide-react";
+import { Link } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 
 const ROLE_LABELS = {
@@ -9,11 +9,16 @@ const ROLE_LABELS = {
 
 export default function Topbar() {
   const { user } = useAuth();
-  const initial = (user?.username || "?").charAt(0).toUpperCase();
+
+  const initial = (user?.username || "?")
+    .charAt(0)
+    .toUpperCase();
 
   return (
     <header className="flex h-16 items-center justify-between border-b border-slate-200 bg-white px-8">
+
       <div>
+
         <h1 className="text-xl font-semibold text-slate-800">
           Dashboard
         </h1>
@@ -21,23 +26,40 @@ export default function Topbar() {
         <p className="text-sm text-slate-500">
           Welcome back.
         </p>
+
       </div>
 
-      <div className="flex items-center gap-4">
-    
+      <div className="flex items-center gap-6">
+
+        <Link
+          to="/"
+          className="rounded-lg border border-slate-200 px-4 py-2 text-sm font-medium text-slate-600 transition hover:bg-slate-100"
+        >
+          Home
+        </Link>
+
         <div className="flex items-center gap-3">
+
           <div className="flex h-10 w-10 items-center justify-center rounded-full bg-teal-600 font-semibold text-white">
             {initial}
           </div>
 
           <div>
-            <p className="text-sm font-medium">{user?.username || "User"}</p>
+
+            <p className="text-sm font-medium">
+              {user?.username || "User"}
+            </p>
+
             <p className="text-xs text-slate-500">
               {ROLE_LABELS[user?.role] || ""}
             </p>
+
           </div>
+
         </div>
+
       </div>
+
     </header>
   );
 }

@@ -1,4 +1,4 @@
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink, Link, useNavigate } from "react-router-dom";
 import {
   LayoutDashboard,
   ParkingSquare,
@@ -94,15 +94,23 @@ export default function Sidebar() {
         flexDirection: "column",
       }}
     >
-      <h2
+      <Link
+        to="/"
         style={{
+          textDecoration: "none",
+          color: "white",
           marginBottom: "32px",
-          fontSize: "24px",
-          fontWeight: "700",
         }}
       >
-        🚗 SlotSmart
-      </h2>
+        <h2
+          style={{
+            fontSize: "24px",
+            fontWeight: "700",
+          }}
+        >
+          🚗 SlotSmart
+        </h2>
+      </Link>
 
       <nav
         style={{
